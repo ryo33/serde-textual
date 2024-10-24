@@ -7,15 +7,15 @@
 
 derive `Display`/`FromStr` by using `serde`'s `Serialize`/`Deserialize`
 
-## Show case
+## Usage examples
 
 ### Enum using `serde`'s `rename_all` or `rename`
 
 ```rust
 use serde::{Serialize, Deserialize};
-use serde_textual::{FromStr, Display};
+use serde_textual::{FromStrSerde, DisplaySerde};
 
-#[derive(FromStr, Display, Serialize, Deserialize, Debug, PartialEq)]
+#[derive(FromStrSerde, DisplaySerde, Serialize, Deserialize, Debug, PartialEq)]
 #[serde(rename_all = "lowercase")]
 enum Kind {
     A,
@@ -31,7 +31,10 @@ assert_eq!(Kind::B.to_string(), "b");
 Don't forget to activate `serde` feature of those crates.
 
 ```rust
-#[derive(FromStr, Display, Serialize, Deserialize, Debug, PartialEq)]
+use serde::{Serialize, Deserialize};
+use serde_textual::{FromStrSerde, DisplaySerde};
+
+#[derive(FromStrSerde, DisplaySerde, Serialize, Deserialize, Debug, PartialEq)]
 #[serde(transparent)]
 struct NewUuid(uuid::Uuid);
 

@@ -2,7 +2,7 @@
 name = "serde-textual"
 version = "0.1.0"
 edition = "2021"
-description = "derive FromStr and Display by using serde impl"
+description = "derive Display/FromStr by using serde"
 categories = ["rust-patterns"]
 keywords = ["serde", "derive", "fromstr", "display"]
 license = "MIT OR Apache-2.0"
