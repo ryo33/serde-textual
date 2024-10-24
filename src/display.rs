@@ -6,6 +6,7 @@ pub fn generate(input: syn::DeriveInput) -> TokenStream {
 
     quote! {
         impl ::core::fmt::Display for #ident {
+			#[inline]
             fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
                 ::serde::ser::Serialize::serialize(self, f)
             }
@@ -30,6 +31,7 @@ mod tests {
         };
         let expected = quote! {
             impl ::core::fmt::Display for SimpleEnum {
+				#[inline]
                 fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
                     ::serde::ser::Serialize::serialize(self, f)
                 }

@@ -22,14 +22,9 @@ impl Parse for AssertTextualInput {
 pub fn generate(input: AssertTextualInput) -> TokenStream {
     let AssertTextualInput { value, textual, .. } = input;
     quote! {
-        let parsed;
-        if false {
-            // This is a dummy assignment to infer the type of #value
-            parsed = #value;
-        } else {
-            parsed = #textual.parse().unwrap();
+        {
+            assert_eq!(#value, #textual.parse().unwrap());
+            assert_eq!(#value.to_string(), #textual);
         }
-        assert_eq!(parsed, #value);
-        assert_eq!(#value.to_string(), #textual);
     }
 }

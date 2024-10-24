@@ -7,6 +7,7 @@ pub fn generate(input: syn::DeriveInput) -> TokenStream {
         impl ::core::str::FromStr for #ident {
             type Err = ::serde::de::value::Error;
 
+            #[inline]
             fn from_str(s: &str) -> Result<Self, Self::Err> {
                 ::serde::Deserialize::deserialize(
                     ::serde::de::value::StrDeserializer::new(s),
@@ -33,6 +34,7 @@ mod tests {
             impl ::core::str::FromStr for SimpleEnum {
                 type Err = ::serde::de::value::Error;
 
+                #[inline]
                 fn from_str(s: &str) -> Result<Self, Self::Err> {
                     ::serde::Deserialize::deserialize(
                         ::serde::de::value::StrDeserializer::new(s),
