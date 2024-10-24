@@ -1,6 +1,6 @@
 [package]
 name = "serde-textual"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 description = "derive Display/FromStr by using serde"
 categories = ["rust-patterns"]
